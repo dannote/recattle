@@ -1,0 +1,8 @@
+tmp/client_body
+tmp/fastcgi
+tmp/proxy
+tmp/scgi
+tmp/uwsgi
+logs
+cache
+*.compiled
