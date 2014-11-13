@@ -136,7 +136,7 @@
         } 
         var request = new XMLHttpRequest();
         request.addEventListener('load', function () {
-          if (request.responseText == 'invalid') {
+          if (!JSON.parse(request.responseText)) {
             notify();
           } else {
             alert('Все верно');
