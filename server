@@ -1,6 +1,5 @@
 #!/bin/sh
 PATH="/usr/local/openresty/nginx/sbin:/usr/local/opt/openresty/bin:/usr/sbin:$PATH"
-SECRET=$(cat secret.txt)
 sed s/%PORT%/${PORT-8080}/ nginx.conf >nginx.conf.compiled
 if command -v nginx 1>/dev/null && nginx -V 2>&1 | grep -q openresty; then
     COMMAND="nginx -p $(pwd) -c nginx.conf.compiled"
