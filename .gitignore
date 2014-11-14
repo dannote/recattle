@@ -6,3 +6,4 @@ tmp/uwsgi
 logs
 cache
 *.compiled
+templates/*.lua

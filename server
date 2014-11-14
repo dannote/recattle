@@ -1,6 +1,15 @@
 #!/bin/sh
 PATH="/usr/local/openresty/nginx/sbin:/usr/local/opt/openresty/bin:/usr/sbin:$PATH"
-sed s/%PORT%/${PORT-8080}/ nginx.conf >nginx.conf.compiled
+# Compile templates
+for TEMPLATE in templates/*.tpl; do
+    COMPILED=${TEMPLATE%.*}.lua
+    echo "return function(_)_[[" >$COMPILED
+    sed -e "s/#[(]/]]_(/g;s/[)]#/)_[[/g;s/#\[/]]/g;s/\]#/_[[/g" $TEMPLATE >>$COMPILED
+    echo "]] end" >>$COMPILED
+done
+# Compile nginx config
+sed s/%PORT%/${PORT-8080}/g nginx.conf >nginx.conf.compiled
+# Check if nginx exists and has ngx_openresty module
 if command -v nginx 1>/dev/null && nginx -V 2>&1 | grep -q openresty; then
     COMMAND="nginx -p $(pwd) -c nginx.conf.compiled"
     case "$1" in

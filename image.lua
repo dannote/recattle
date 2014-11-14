@@ -95,7 +95,7 @@ function image.create(text, type, background, foreground)
     return nil
   end
   MagickWand.MagickSetImageBackgroundColor(magick_wand, pixel_wand)
-  if not MagickWand.DrawSetFont(drawing_wand, "font/impact.ttf") then
+  if not MagickWand.DrawSetFont(drawing_wand, "fonts/impact.ttf") then
     ngx.log(ngx.ERROR, "Failed to load font")
     finalize()
     return nil

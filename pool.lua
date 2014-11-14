@@ -5,7 +5,7 @@ local challenges = ngx.shared.challenges
 
 local CHALLENGE_CACHE_SIZE = 2048
 
-pool = {}
+local pool = {}
 
 -- Getters and setters
 setmetatable(pool, {
@@ -27,7 +27,7 @@ setmetatable(pool, {
 
 function pool.update()
   ngx.log(ngx.NOTICE, "Fetching challenges")
-  xml.text(ngx.location.capture("/data.xml").body, function(str)
+  xml.text(ngx.location.capture("/yandex").body, function(str)
     if utf8.len(str) > 16 and utf8.len(str) < 32 then
       pool[pool.last] = utf8.upper(utf8.gsub(str, "[^%w%s-]", ""))
       -- Round-robin storage
