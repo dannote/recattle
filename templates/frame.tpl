@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <style>
       <% require "templates.style" %>
+      body { margin: 0; }
     </style>
   </head>
   <body>
