@@ -4,7 +4,7 @@ PATH="/usr/local/openresty/nginx/sbin:/usr/local/opt/openresty/bin:/usr/sbin:$PA
 for TEMPLATE in templates/*.tpl; do
     COMPILED=${TEMPLATE%.*}.lua
     echo "return function(_)_[=[" >$COMPILED
-    sed -e "s/#[(]/]=]_(/g;s/[)]#/)_[=[/g;s/#\[/]=]/g;s/\]#/_[=[/g" $TEMPLATE >>$COMPILED
+    sed -e "s/<%/]=]_(/g; s/%>/)_[=[/g; s/<[?]/]=] /g; s/[?]>/ _[=[/g" $TEMPLATE >>$COMPILED
     echo "]=] end" >>$COMPILED
 done
 # Compile nginx config
