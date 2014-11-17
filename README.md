@@ -27,4 +27,4 @@ recattle
 API
 ---
 `GET http://recattle.dannote.net/validate?challenge=[challenge]&response=[response]`
-  &mdash; проверяет верность ответа, возвращает значение типа boolean
+  &mdash; проверяет верность ответа, возвращает значение типа *boolean*
