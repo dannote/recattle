@@ -1,7 +1,7 @@
-@import url(//fonts.googleapis.com/css?family=Open+Sans);
+@import url(//fonts.googleapis.com/css?family=Droid+Sans);
 @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
-body { font-family: "Open Sans", sans-serif; font-weight: 300; font-size: 10px; color: <%foreground%>; background: <%background%>; }
-form img, input, form, button { border: dashed 1px <%foreground%>; border-radius: 7px; float: left; display: block; margin: 5px; }
+body { font-family: "Droid Sans", sans-serif; font-weight: 300; font-size: 10px; color: <%foreground%>; background: <%background%>; }
+form img, input, form, button, .code { border: dashed 1px <%foreground%>; border-radius: 7px; float: left; display: block; margin: 5px; }
 form { margin: 0; }
 img:hover, input:hover, input:focus, #retry:hover { border: solid 1px <%foreground%>;}
 form img { width: 400px; height: 60px; }

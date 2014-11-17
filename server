@@ -2,10 +2,7 @@
 PATH="/usr/local/openresty/nginx/sbin:/usr/local/opt/openresty/bin:/usr/sbin:$PATH"
 # Compile templates
 for TEMPLATE in templates/*.tpl; do
-    templatec $TEMPLATE -o ${TEMPLATE%.*}.lua
-done
-for TEMPLATE in templates/*/*.tpl; do
-    templatec $TEMPLATE -o ${TEMPLATE%.*}.lua
+    templatec -m -o ${TEMPLATE%.*}.lua $TEMPLATE
 done
 # Compile nginx config
 sed s/%PORT%/${PORT-8080}/g nginx.conf >nginx.conf.compiled

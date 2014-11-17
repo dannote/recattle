@@ -4,8 +4,13 @@
     <meta charset="utf-8" />
     <title>recattle - search query based Turing test</title>
     <style>
-      <% require "templates.style.frame" %>
-      <% require "templates.style.index" %>
+      <% require "templates.style" %>
+      body { margin: 10px; }
+      header { margin: 5px; }
+      header h1 { font-size: 32px; font-style: bold; margin-top: 0px; margin-bottom: 0px; }
+      header div { font-style: italic; font-size: 10px; padding-top: 3px; border-top: dashed 1px <%foreground%>; width: 414px; }
+      #retry:target:hover { transform: none; }
+      #retry:target:before { content: "\f00d"; }
     </style>
   </head>
   <body>
@@ -15,31 +20,10 @@
       <div>Тест Тьюринга на основе реальных поисковых запросов в Яндексе</div>
     </header>
     <form action="/validate">
-      <img src="challenge.png?background=<%background:gsub('#', '%%23')%>&amp;foreground=<%foreground:gsub('#', '%%23')%>"/>
-      <input name="response" type="text" autocomplete="off"/ >
-      <button type="button" id="retry"></button>
+      <% require "templates.form" %>
     </form>
     <script>
-      var form = document.querySelector('form');
-      var image = form.querySelector('form img');
-      var input = form.querySelector('[name=response]');
-      
-      function update() {
-        image.src = image.src.split('#')[0] + '#' + Date.now();
-        input.value = '';
-        input.focus();
-      }
-
-      function notify() {
-        update();
-        document.location.hash = 'retry';
-        setTimeout(function () {
-          document.location.hash = 'please';
-        }, 2000);
-      }
-
-      image.addEventListener('click', update);
-      form.querySelector('#retry').addEventListener('click', update);
+      <% require "templates.script" %>
       form.addEventListener('submit', function (event) {
         event.preventDefault();
         if (!input.value.length) {
