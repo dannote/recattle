@@ -19,13 +19,12 @@ recattle
 
 * `callback` &mdash; ссылка, по которой будет отправлен запрос с параметрами:
   - `response` &mdash; ответ от пользователя
-  - `challenge` &mdash; идентифекатор картинки
-* `method` &mdash; метод, который будет использоваться при отправки запросв
+  - `challenge` &mdash; идентификатор картинки
+* `method` &mdash; метод, который будет использоваться при отправке запроса
 * `background` &mdash; цвет заднего фона
 * `foreground` &mdash; цвет текста и границ
 
 API
 ---
 `GET http://recattle.dannote.net/validate?challenge=[challenge]&response=[response]`
-
-&mdash; проверяет верность ответа, возвращает значение типа boolean
+  &mdash; проверяет верность ответа, возвращает значение типа boolean
