@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <style>
-      <% require "templates.style" %>
+      <% require "templates.style.frame" %>
       body { margin: 0; }
     </style>
   </head>
   <body>
     <form method="<%method%>" action="<%callback%>">
-      <img src="challenge?background=<%background%>&amp;foreground=<%foreground%>"/>
+      <img src="challenge?background=<%background:gsub('#', '%%23')%>&amp;foreground=<%foreground:gsub('#', '%%23')%>"/>
       <input name="response" autocomplete="off" />
       <button type="button"></button>
     </form>

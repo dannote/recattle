@@ -2,10 +2,10 @@
 PATH="/usr/local/openresty/nginx/sbin:/usr/local/opt/openresty/bin:/usr/sbin:$PATH"
 # Compile templates
 for TEMPLATE in templates/*.tpl; do
-    COMPILED=${TEMPLATE%.*}.lua
-    echo "return function(_)_[=[" >$COMPILED
-    sed -e "s/<%/]=]_(/g; s/%>/)_[=[/g; s/<[?]/]=] /g; s/[?]>/ _[=[/g; s/^[ \t]*//; s/[ \t]*$//" $TEMPLATE | tr '\n' ' ' >>$COMPILED
-    echo "]=] end" >>$COMPILED
+    templatec $TEMPLATE -o ${TEMPLATE%.*}.lua
+done
+for TEMPLATE in templates/*/*.tpl; do
+    templatec $TEMPLATE -o ${TEMPLATE%.*}.lua
 done
 # Compile nginx config
 sed s/%PORT%/${PORT-8080}/g nginx.conf >nginx.conf.compiled
