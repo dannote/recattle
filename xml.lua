@@ -7,7 +7,9 @@ local lxp = require "lxp"
 function xml.text(data, callback)
   local parser = lxp.new({
     CharacterData = function(parser, str)
-      callback(str)
+      for s in str:gmatch("[^\r\n]+") do
+        callback(s)
+      end
     end
   }, nil, false)
   parser:parse(data)
