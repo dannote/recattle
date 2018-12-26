@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>recattle - search query based Turing test</title>
     <style>
-      <% require "templates.style" %>
+      <%= require "templates.style" %>
       body { margin: 10px; }
       header { margin: 5px; }
       header h1 { font-size: 32px; font-style: bold; margin-top: 0px; margin-bottom: 0px; }
@@ -20,10 +20,10 @@
       <div>Тест Тьюринга на основе реальных поисковых запросов в Яндексе</div>
     </header>
     <form action="/validate">
-      <% require "templates.form" %>
+      <%= require "templates.form" %>
     </form>
     <script>
-      <% require "templates.script" %>
+      <%= require "templates.script" %>
       form.addEventListener('submit', function (event) {
         event.preventDefault();
         if (!input.value.length) {
